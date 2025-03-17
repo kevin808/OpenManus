@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Picture Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #image-container { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>AI Picture Generator</h1>
+    <input type="text" id="prompt" placeholder="Enter a prompt" />
+    <button id="generate">Generate Image</button>
+    <div id="image-container"></div>
+
+    <script>
+        document.getElementById('generate').onclick = function() {
+            const prompt = document.getElementById('prompt').value;
+            fetch('/generate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ prompt: prompt })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const imgContainer = document.getElementById('image-container');
+                imgContainer.innerHTML = `<img src="${data.image_url}" alt="Generated Image" />`;
+            });
+        };
+    </script>
+</body>
+</html>

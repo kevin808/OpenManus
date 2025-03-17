@@ -9,6 +9,21 @@ from app.config import PROJECT_ROOT
 _print_level = "INFO"
 
 
+class CustomHandler:
+    """Base class for custom log handlers"""
+    
+    def __init__(self):
+        self.level = 0
+    
+    def emit(self, record):
+        """Process the record"""
+        pass
+    
+    def __call__(self, record):
+        """Make the handler callable"""
+        return self.emit(record)
+
+
 def define_log_level(print_level="INFO", logfile_level="DEBUG", name: str = None):
     """Adjust the log level to above level"""
     global _print_level

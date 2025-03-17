@@ -1,0 +1,177 @@
+:root {
+    --primary-color: #3a7bd5;
+    --secondary-color: #3a6073;
+    --light-gray: #f5f5f5;
+    --dark-gray: #333;
+    --border-color: #e0e0e0;
+}
+
+body {
+    font-family: 'Segoe UI', 'Microsoft Yahei', '微软雅黑', sans-serif;
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0;
+}
+
+.app-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.content-area {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.prompt-section {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 20px;
+    flex: 0 0 auto;
+    max-height: 220px; /* 限制最大高度 */
+}
+
+.log-section {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 380px; /* 增加日志区域高度 */
+}
+
+.log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.log-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.log-container {
+    flex: 1;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+    height: calc(100% - 50px);
+    min-height: 250px;
+}
+
+.logs {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.log-entry {
+    margin-bottom: 4px;
+    padding: 4px 8px;
+    border-radius: 3px;
+}
+
+.log-level-INFO {
+    background-color: rgba(13, 110, 253, 0.1);
+    border-left: 3px solid #0d6efd;
+}
+
+.log-level-WARNING {
+    background-color: rgba(255, 193, 7, 0.1);
+    border-left: 3px solid #ffc107;
+}
+
+.log-level-ERROR {
+    background-color: rgba(220, 53, 69, 0.1);
+    border-left: 3px solid #dc3545;
+}
+
+.form-group {
+    margin-bottom: 0.5rem; /* 减少底部间距 */
+}
+
+textarea.form-control {
+    resize: none;
+    min-height: 80px; /* 减小最小高度 */
+    max-height: 120px; /* 限制最大高度 */
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+/* 移除不再需要的响应区域样式 */
+.response-area {
+    display: none;
+}
+
+.response-content {
+    display: none;
+}
+
+.app-footer {
+    background-color: var(--dark-gray);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: auto;
+}
+
+/* 修改按钮状态样式 */
+#submitPrompt {
+    position: relative;
+    min-width: 80px;
+}
+
+#submitPrompt:disabled {
+    cursor: not-allowed;
+}
+
+/* 移除全页面加载蒙版样式 */
+.loading-overlay {
+    display: none !important;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .prompt-section, .log-section {
+        padding: 15px;
+    }
+    
+    .log-container {
+        min-height: 200px;
+    }
+    
+    .log-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .log-controls {
+        margin-top: 8px;
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
